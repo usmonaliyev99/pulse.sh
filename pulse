@@ -1,0 +1,22 @@
+#!/bin/bash
+
+ROOT_DIR=$(dirname $(readlink -m "$0"))
+
+# include all config files
+source $ROOT_DIR/conf.d/pulse.conf
+
+# include all logic
+source $ROOT_DIR/lib/cpu.sh
+source $ROOT_DIR/lib/ram.sh
+source $ROOT_DIR/lib/telegram.sh
+
+while true; do
+
+  monitor_cpu
+
+  monitor_ram
+
+  sleep $INTERVAL
+done
+
+
