@@ -8,13 +8,23 @@ source $ROOT_DIR/conf.d/pulse.conf
 # include all logic
 source $ROOT_DIR/lib/cpu.sh
 source $ROOT_DIR/lib/ram.sh
+source $ROOT_DIR/lib/storage.sh
 source $ROOT_DIR/lib/telegram.sh
+
+monitor_storage
+
+exit
 
 while true; do
 
+  #
   monitor_cpu
 
+  #
   monitor_ram
+
+  #
+  monitor_storage
 
   sleep $INTERVAL
 done
